@@ -1,22 +1,29 @@
 void setup() {
-
-pinMode(2,OUTPUT);
-pinMode(4,OUTPUT);
-pinMode(7,OUTPUT);
-pinMode(8,OUTPUT);
-pinMode(12,OUTPUT);
-pinMode(13,OUTPUT);
+int rosso1 = 2;
+int rosso2 = 4;
+int verde1 = 7;
+int verde2 = 8;
+int giallo1 = 12;
+int giallo2 = 13;
+pinMode(rosso1,OUTPUT);
+pinMode(rosso2,OUTPUT);
+pinMode(verde1,OUTPUT);
+pinMode(verde2,OUTPUT);
+pinMode(giallo1,OUTPUT);
+pinMode(giallo2,OUTPUT);
 
 }
-
-void loop() {
-  public void Lampeggia(int led)
+void lampeggia(int led,int n)
   {
-    for(int i=0,i<=4,i++)
+    for(int i=0,i<n,i++)
   {
     digitalWrite(led,LOW);
     digitalWrite(led,HIGH);
   }
+    digitalWrite(led,LOW);
+  }
+
+void loop() {
   
 
 }
