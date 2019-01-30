@@ -11,14 +11,14 @@ pinMode(verde1,OUTPUT);
 pinMode(verde2,OUTPUT);
 pinMode(giallo1,OUTPUT);
 pinMode(giallo2,OUTPUT);
-
 }
-void lampeggia(int led,int n)
+
+void lampeggia(int led,int n,int t)
   {
     for(int i=0,i<n,i++)
   {
     digitalWrite(led,LOW);
-    delay 333;
+    delay t;
     digitalWrite(led,HIGH);
   }
     digitalWrite(led,LOW);
@@ -31,6 +31,4 @@ void loop() {
   digitalWrite(giallo2,LOW)
   digitalWrite(rosso2,HIGH)
   delay 7000;
-  
-
 }
