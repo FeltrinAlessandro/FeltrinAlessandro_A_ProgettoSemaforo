@@ -11,7 +11,6 @@ int lampeggiVerde;
 int intervalloLampeggi;
 int durataSoloRosso;
 int durataSoloVerde;
-int richiesta;
 pinMode(rosso1,OUTPUT);
 pinMode(rosso2,OUTPUT);
 pinMode(verde1,OUTPUT);
@@ -55,6 +54,8 @@ void lampeggiaVerde()
     richiestaDurataGiallo();
     richiestaNumeroLampeggi();
     trovaDurataSoloRosso();
+    richiestaIntervalloLampeggi();
+    trovaDurataSoloVerde();
   }
 
   void richiediDurataSemaforo()
@@ -105,11 +106,19 @@ void lampeggiaVerde()
       intervalloLampeggi = Serial.read().toInt();
       if(intervalloLampeggi*lampeggiVerde<durataSoloRosso)
       {
+        finito = true;
+      }
+      else
+      {
+        print("valore dato non accettabile");
       }
     }
-    
   }
 
+  void trovaDurataSoloVerde()
+  {
+    duraraSoloVerde=durataSoloRosso-intervalloLampeggi*lampeggiVerde;
+  }
 void loop() {
   digitalWrite(verde1,HIGH)
   digitalWrite(giallo2,HIGH)
