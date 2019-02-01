@@ -11,6 +11,7 @@ int lampeggiVerde;
 int intervalloLampeggi;
 int durataSoloRosso;
 int durataSoloVerde;
+int richiesta;
 pinMode(rosso1,OUTPUT);
 pinMode(rosso2,OUTPUT);
 pinMode(verde1,OUTPUT);
@@ -38,7 +39,14 @@ void lampeggiaVerde()
   }
   void metodo2()
   {
-    
+    digitalWrite(giallo1,HIGH);
+    digitalWrite(giallo2,HIGH);
+    delay durataGiallo;
+    digitalWrite(giallo1,LOW);
+    digitalWrite(giallo2,LOW);
+    digitalWrite(rosso2,LOW);
+    digitalWrite(rosso1,HIGH);
+    digitalWrite(verde1,HIGH);
   }
 
 void loop() {
