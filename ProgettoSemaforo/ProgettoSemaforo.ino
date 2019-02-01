@@ -29,14 +29,14 @@ void lampeggiaVerde(int verde)
   }
     digitalWrite(verde,LOW);
   }
-  void semaforoPrimaParte(int rosso,int verde)
+  void semaforoPrimaParte(int rosso_,int verde)
   {
-    digitalWrite(rosso,HIGH);
+    digitalWrite(rosso_,HIGH);
     digitalWrite(verde,HIGH);
     delay durataSoloVerde;
     lampeggiaVerde(verde);
   }
-  void semaforoSecondaParte(int verde int rosso int rosso_ int giallo int giallo_)
+  void semaforoSecondaParte(int verde_ int rosso int rosso_ int giallo int giallo_)
   {
     digitalWrite(giallo,HIGH);
     digitalWrite(giallo_,HIGH);
@@ -45,7 +45,7 @@ void lampeggiaVerde(int verde)
     digitalWrite(giallo_,LOW);
     digitalWrite(rosso_,LOW);
     digitalWrite(rosso,HIGH);
-    digitalWrite(verde,HIGH);
+    digitalWrite(verde_,HIGH);
   }
 
   void richiestaValori()
@@ -121,5 +121,10 @@ void lampeggiaVerde(int verde)
   }
 void loop() 
 {
+  richiestaValori();
+  semaforoPrimaParte(rosso2, verde1);
+  semaforoSecondaParte(verde2, rosso1, rosso2, giallo1, giallo2);
+  semaforoPrimaParte(rosso1,verde2);
+  semaforoSecondaParte(verde1, rosso2, rosso1, giallo2, giallo1);
   
 }
