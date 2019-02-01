@@ -19,6 +19,15 @@ pinMode(giallo1,OUTPUT);
 pinMode(giallo2,OUTPUT);
 }
 
+void loop() 
+{
+  richiestaValori();
+  semaforoPrimaParte(rosso2, verde1);
+  semaforoSecondaParte(verde2, rosso1, rosso2, giallo1, giallo2);
+  semaforoPrimaParte(rosso1,verde2);
+  semaforoSecondaParte(verde1, rosso2, rosso1, giallo2, giallo1); 
+}
+
 void lampeggiaVerde(int verde)
   {
     for(int i=0;i<lampeggiVerde;i++)
@@ -102,7 +111,7 @@ void lampeggiaVerde(int verde)
     while(finito==false)
     {
       print("quanto vuoi che duri l'intervallo tra lampeggi?(input in millisecondi)");
-      while(Serial.available==0){};
+      while(Serial.available == 0){};
       intervalloLampeggi = Serial.read().toInt();
       if(intervalloLampeggi*lampeggiVerde<durataSoloRosso)
       {
@@ -119,12 +128,3 @@ void lampeggiaVerde(int verde)
   {
     duraraSoloVerde=durataSoloRosso-intervalloLampeggi*lampeggiVerde;
   }
-void loop() 
-{
-  richiestaValori();
-  semaforoPrimaParte(rosso2, verde1);
-  semaforoSecondaParte(verde2, rosso1, rosso2, giallo1, giallo2);
-  semaforoPrimaParte(rosso1,verde2);
-  semaforoSecondaParte(verde1, rosso2, rosso1, giallo2, giallo1);
-  
-}
