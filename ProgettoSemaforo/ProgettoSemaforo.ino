@@ -19,33 +19,33 @@ pinMode(giallo1,OUTPUT);
 pinMode(giallo2,OUTPUT);
 }
 
-void lampeggiaVerde()
+void lampeggiaVerde(int verde)
   {
     for(int i=0,i<lampeggiVerde,i++)
   {
-    digitalWrite(verde1,LOW);
+    digitalWrite(verde,LOW);
     delay intervalloLampeggi;
-    digitalWrite(verde1,HIGH);
+    digitalWrite(verde,HIGH);
   }
-    digitalWrite(verde1,LOW);
+    digitalWrite(verde,LOW);
   }
-  void semaforoPrimaParte()
+  void semaforoPrimaParte(int rosso,int verde)
   {
-    digitalWrite(rosso2,HIGH);
-    digitalWrite(verde1,HIGH);
+    digitalWrite(rosso,HIGH);
+    digitalWrite(verde,HIGH);
     delay durataSoloVerde;
-    lampeggiaVerde();
+    lampeggiaVerde(verde);
   }
-  void semaforoSecondaParte()
+  void semaforoSecondaParte(int verde int rosso int rosso_ int giallo int giallo_)
   {
-    digitalWrite(giallo1,HIGH);
-    digitalWrite(giallo2,HIGH);
+    digitalWrite(giallo,HIGH);
+    digitalWrite(giallo_,HIGH);
     delay durataGiallo;
-    digitalWrite(giallo1,LOW);
-    digitalWrite(giallo2,LOW);
-    digitalWrite(rosso2,LOW);
-    digitalWrite(rosso1,HIGH);
-    digitalWrite(verde1,HIGH);
+    digitalWrite(giallo,LOW);
+    digitalWrite(giallo_,LOW);
+    digitalWrite(rosso_,LOW);
+    digitalWrite(rosso,HIGH);
+    digitalWrite(verde,HIGH);
   }
 
   void richiestaValori()
@@ -119,11 +119,7 @@ void lampeggiaVerde()
   {
     duraraSoloVerde=durataSoloRosso-intervalloLampeggi*lampeggiVerde;
   }
-void loop() {
-  digitalWrite(verde1,HIGH)
-  digitalWrite(giallo2,HIGH)
-  delay 3000;
-  digitalWrite(giallo2,LOW)
-  digitalWrite(rosso2,HIGH)
-  delay 7000;
+void loop() 
+{
+  
 }
