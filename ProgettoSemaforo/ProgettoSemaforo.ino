@@ -21,7 +21,7 @@ pinMode(giallo2,OUTPUT);
 
 void lampeggiaVerde(int verde)
   {
-    for(int i=0,i<lampeggiVerde,i++)
+    for(int i=0;i<lampeggiVerde;i++)
   {
     digitalWrite(verde,LOW);
     delay intervalloLampeggi;
@@ -36,7 +36,7 @@ void lampeggiaVerde(int verde)
     delay durataSoloVerde;
     lampeggiaVerde(verde);
   }
-  void semaforoSecondaParte(int verde_ int rosso int rosso_ int giallo int giallo_)
+  void semaforoSecondaParte(int verde_, int rosso, int rosso_, int giallo, int giallo_)
   {
     digitalWrite(giallo,HIGH);
     digitalWrite(giallo_,HIGH);
@@ -101,7 +101,7 @@ void lampeggiaVerde(int verde)
     bool finito = false;
     while(finito==false)
     {
-      print("quanto vuoi che duri l'intervallo tra lampeggi?(input in millisecondi)")
+      print("quanto vuoi che duri l'intervallo tra lampeggi?(input in millisecondi)");
       while(Serial.available==0){};
       intervalloLampeggi = Serial.read().toInt();
       if(intervalloLampeggi*lampeggiVerde<durataSoloRosso)
