@@ -30,14 +30,14 @@ void lampeggiaVerde()
   }
     digitalWrite(verde1,LOW);
   }
-  void metodo1()
+  void semaforoPrimaParte()
   {
     digitalWrite(rosso2,HIGH);
     digitalWrite(verde1,HIGH);
     delay durataSoloVerde;
     lampeggiaVerde();
   }
-  void metodo2()
+  void semaforoSecondaParte()
   {
     digitalWrite(giallo1,HIGH);
     digitalWrite(giallo2,HIGH);
@@ -47,6 +47,67 @@ void lampeggiaVerde()
     digitalWrite(rosso2,LOW);
     digitalWrite(rosso1,HIGH);
     digitalWrite(verde1,HIGH);
+  }
+
+  void richiestaValori()
+  {
+    richiestaDurataSemaforo();
+    richiestaDurataGiallo();
+    richiestaNumeroLampeggi();
+    trovaDurataSoloRosso();
+  }
+
+  void richiediDurataSemaforo()
+  {
+    print("quanto vuoi che duri il semaforo?(input in millisecondi)");
+    while(Serial.available==0){};
+    durataSemaforo = Serial.read().toInt();
+  }
+
+  void richiestaDurataGiallo()
+  {
+     bool finito = false;
+    while(finito==false)
+    {
+      print("quanto vuoi che duri il giallo?(input in millisecondi)");
+      while(Serial.available==0){};
+      durataGiallo= Serial.read().toInt();
+      if(durataGiallo<durataSemaforo)
+      {
+        finito = true;
+      }
+      else
+      {
+        print("valore dato non accettabile");
+      }
+    }
+  }
+  
+  void richiestaNumeroLampeggi()
+  {
+    print("quante volte vuoi che lampeggi il verde?");
+    while(Serial.available==0){};
+    lampeggiVerde=Serial.read().toInt();
+  }
+
+  void trovaDurataSoloRosso()
+  {
+    durataSoloRosso=durataSemaforo-durataGiallo;
+  }
+  
+  void richiestaIntervalloLampeggi()
+  {
+    bool finito = false;
+    while(finito==false)
+    {
+      print("quanto vuoi che duri l'intervallo tra lampeggi?(input in millisecondi)")
+      while(Serial.available==0){};
+      intervalloLampeggi = Serial.read().toInt();
+      if(intervalloLampeggi*lampeggiVerde<durataSoloRosso)
+      {
+      }
+    }
+    
   }
 
 void loop() {
