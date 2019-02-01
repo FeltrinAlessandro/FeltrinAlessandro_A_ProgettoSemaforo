@@ -27,7 +27,7 @@ void lampeggiaVerde()
     delay intervalloLampeggi;
     digitalWrite(verde1,HIGH);
   }
-    digitalWrite(led,LOW);
+    digitalWrite(verde1,LOW);
   }
   void metodo1()
   {
@@ -35,6 +35,10 @@ void lampeggiaVerde()
     digitalWrite(verde1,HIGH);
     delay durataSoloVerde;
     lampeggiaVerde();
+  }
+  void metodo2()
+  {
+    
   }
 
 void loop() {
