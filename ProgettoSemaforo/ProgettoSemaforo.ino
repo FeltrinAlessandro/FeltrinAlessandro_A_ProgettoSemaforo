@@ -139,10 +139,10 @@ void lampeggiaVerde(int verde)
         Serial.println("valore dato non accettabile");
       }
     }
-    intervalloLampeggi=intervalloLampeggi/2;
   }
 
   void trovaDurataSoloVerde()
   {
     durataSoloVerde=durataSoloRosso-intervalloLampeggi*lampeggiVerde;
+     intervalloLampeggi=intervalloLampeggi/2;
   }
