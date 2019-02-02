@@ -12,12 +12,12 @@
   int durataSoloVerde;
 
 void setup() {
-  rosso1 = 2;
-  rosso2 = 4;
-  verde1 = 7;
-  verde2 = 8;
-  giallo1 = 12;
-  giallo2 = 13;
+  rosso1 = 8;
+  rosso2 = 5;
+  verde1 = 10;
+  verde2 = 7;
+  giallo1 = 9;
+  giallo2 = 6;
 
   pinMode(rosso1,OUTPUT);
   pinMode(rosso2,OUTPUT);
