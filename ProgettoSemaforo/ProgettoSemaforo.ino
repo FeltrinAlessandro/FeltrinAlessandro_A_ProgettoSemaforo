@@ -1,22 +1,32 @@
+  int rosso1;
+  int rosso2;
+  int verde1;
+  int verde2;
+  int giallo1;
+  int giallo2;
+  int durataSemaforo;
+  int durataGiallo;
+  int lampeggiVerde;
+  int intervalloLampeggi;
+  int durataSoloRosso;
+  int durataSoloVerde;
+
 void setup() {
-int rosso1 = 2;
-int rosso2 = 4;
-int verde1 = 7;
-int verde2 = 8;
-int giallo1 = 12;
-int giallo2 = 13;
-int durataSemaforo;
-int durataGiallo;
-int lampeggiVerde;
-int intervalloLampeggi;
-int durataSoloRosso;
-int durataSoloVerde;
-pinMode(rosso1,OUTPUT);
-pinMode(rosso2,OUTPUT);
-pinMode(verde1,OUTPUT);
-pinMode(verde2,OUTPUT);
-pinMode(giallo1,OUTPUT);
-pinMode(giallo2,OUTPUT);
+  rosso1 = 2;
+  rosso2 = 4;
+  verde1 = 7;
+  verde2 = 8;
+  giallo1 = 12;
+  giallo2 = 13;
+
+  pinMode(rosso1,OUTPUT);
+  pinMode(rosso2,OUTPUT);
+  pinMode(verde1,OUTPUT);
+  pinMode(verde2,OUTPUT);
+  pinMode(giallo1,OUTPUT);
+  pinMode(giallo2,OUTPUT);
+
+  Serial.begin(9600);
 }
 
 void loop() 
@@ -33,7 +43,7 @@ void lampeggiaVerde(int verde)
     for(int i=0;i<lampeggiVerde;i++)
   {
     digitalWrite(verde,LOW);
-    delay intervalloLampeggi;
+    delay(intervalloLampeggi);
     digitalWrite(verde,HIGH);
   }
     digitalWrite(verde,LOW);
@@ -42,14 +52,14 @@ void lampeggiaVerde(int verde)
   {
     digitalWrite(rosso_,HIGH);
     digitalWrite(verde,HIGH);
-    delay durataSoloVerde;
+    delay(durataSoloVerde);
     lampeggiaVerde(verde);
   }
   void semaforoSecondaParte(int verde_, int rosso, int rosso_, int giallo, int giallo_)
   {
     digitalWrite(giallo,HIGH);
     digitalWrite(giallo_,HIGH);
-    delay durataGiallo;
+    delay(durataGiallo);
     digitalWrite(giallo,LOW);
     digitalWrite(giallo_,LOW);
     digitalWrite(rosso_,LOW);
@@ -67,37 +77,41 @@ void lampeggiaVerde(int verde)
     trovaDurataSoloVerde();
   }
 
-  void richiediDurataSemaforo()
+  void richiestaDurataSemaforo()
   {
-    print("quanto vuoi che duri il semaforo?(input in millisecondi)");
-    while(Serial.available==0){};
-    durataSemaforo = Serial.read().toInt();
+    Serial.println("quanto vuoi che duri il semaforo?(input in millisecondi)");
+    while(Serial.available() == 0){};
+    String inp = Serial.readString();
+    durataSemaforo  = inp.toInt();
   }
 
   void richiestaDurataGiallo()
   {
      bool finito = false;
-    while(finito==false)
+    while(!finito)
     {
-      print("quanto vuoi che duri il giallo?(input in millisecondi)");
-      while(Serial.available==0){};
-      durataGiallo= Serial.read().toInt();
+      Serial.println("quanto vuoi che duri il giallo?(input in millisecondi)");
+      while(Serial.available() == 0){};
+      String inp = Serial.readString();
+      durataGiallo  = inp.toInt();
       if(durataGiallo<durataSemaforo)
       {
         finito = true;
       }
       else
       {
-        print("valore dato non accettabile");
+        Serial.println("valore dato non accettabile");
       }
     }
   }
   
   void richiestaNumeroLampeggi()
   {
-    print("quante volte vuoi che lampeggi il verde?");
-    while(Serial.available==0){};
-    lampeggiVerde=Serial.read().toInt();
+    Serial.println("quante volte vuoi che lampeggi il verde?");
+    while(Serial.available() == 0){};
+    String inp = Serial.readString();
+    lampeggiVerde = inp.toInt();
+
   }
 
   void trovaDurataSoloRosso()
@@ -108,23 +122,24 @@ void lampeggiaVerde(int verde)
   void richiestaIntervalloLampeggi()
   {
     bool finito = false;
-    while(finito==false)
+    while(!finito)
     {
-      print("quanto vuoi che duri l'intervallo tra lampeggi?(input in millisecondi)");
-      while(Serial.available == 0){};
-      intervalloLampeggi = Serial.read().toInt();
+      Serial.println("quanto vuoi che duri l'intervallo tra lampeggi?(input in millisecondi)");
+      while(Serial.available() == 0){};
+      String inp = Serial.readString();
+      intervalloLampeggi = inp.toInt();
       if(intervalloLampeggi*lampeggiVerde<durataSoloRosso)
       {
         finito = true;
       }
       else
       {
-        print("valore dato non accettabile");
+        Serial.println("valore dato non accettabile");
       }
     }
   }
 
   void trovaDurataSoloVerde()
   {
-    duraraSoloVerde=durataSoloRosso-intervalloLampeggi*lampeggiVerde;
+    durataSoloVerde=durataSoloRosso-intervalloLampeggi*lampeggiVerde;
   }
