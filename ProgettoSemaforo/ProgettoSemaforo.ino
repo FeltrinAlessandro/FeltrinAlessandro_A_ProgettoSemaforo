@@ -32,6 +32,7 @@ void setup() {
 void loop() 
 {
   richiestaValori();
+  intervalloLampeggi=intervalloLampeggi/2;
   semaforoPrimaParte(rosso2, verde1);
   semaforoSecondaParte(verde2, rosso1, rosso2, giallo1, giallo2);
   semaforoPrimaParte(rosso1,verde2);
@@ -42,7 +43,6 @@ void lampeggiaVerde(int verde)
   {
     for(int i=0;i<lampeggiVerde;i++)
   {
-    intervalloLampeggi=intervalloLampeggi/2;
     digitalWrite(verde,LOW);
     delay(intervalloLampeggi);
     digitalWrite(verde,HIGH);
