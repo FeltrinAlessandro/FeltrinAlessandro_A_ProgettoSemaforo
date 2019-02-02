@@ -42,9 +42,11 @@ void lampeggiaVerde(int verde)
   {
     for(int i=0;i<lampeggiVerde;i++)
   {
+    intervalloLampeggi=intervalloLampeggi/2;
     digitalWrite(verde,LOW);
     delay(intervalloLampeggi);
     digitalWrite(verde,HIGH);
+    delay(intervalloLampeggi);
   }
     digitalWrite(verde,LOW);
   }
