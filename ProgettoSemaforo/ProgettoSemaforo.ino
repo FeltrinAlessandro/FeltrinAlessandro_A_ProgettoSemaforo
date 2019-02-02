@@ -85,7 +85,15 @@ void lampeggiaVerde(int verde)
     String inp = Serial.readString();
     durataSemaforo  = inp.toInt();
   }
+  
+  void richiestaNumeroLampeggi()
+  {
+    Serial.println("quante volte vuoi che lampeggi il verde?");
+    while(Serial.available() == 0){};
+    String inp = Serial.readString();
+    lampeggiVerde = inp.toInt();
 
+  }
   void richiestaDurataGiallo()
   {
      bool finito = false;
@@ -106,14 +114,7 @@ void lampeggiaVerde(int verde)
     }
   }
   
-  void richiestaNumeroLampeggi()
-  {
-    Serial.println("quante volte vuoi che lampeggi il verde?");
-    while(Serial.available() == 0){};
-    String inp = Serial.readString();
-    lampeggiVerde = inp.toInt();
 
-  }
 
   void trovaDurataSoloRosso()
   {
