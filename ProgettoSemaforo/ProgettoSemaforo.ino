@@ -32,7 +32,6 @@ void setup() {
 void loop() 
 {
   richiestaValori();
-  intervalloLampeggi=intervalloLampeggi/2;
   semaforoPrimaParte(rosso2, verde1);
   semaforoSecondaParte(verde2, rosso1, rosso2, giallo1, giallo2);
   semaforoPrimaParte(rosso1,verde2);
@@ -139,6 +138,7 @@ void lampeggiaVerde(int verde)
         Serial.println("valore dato non accettabile");
       }
     }
+    intervalloLampeggi=intervalloLampeggi/2;
   }
 
   void trovaDurataSoloVerde()
