@@ -38,7 +38,7 @@ void loop()
   semaforoSecondaParte(verde1, rosso2, rosso1, giallo2, giallo1); 
 }
 
-void lampeggiaVerde(int verde)
+void lampeggiaVerde(int verde)//Questo metodo fa lampeggiare il verde
   {
     for(int i=0;i<lampeggiVerde;i++)
   {
@@ -49,14 +49,14 @@ void lampeggiaVerde(int verde)
   }
     digitalWrite(verde,LOW);
   }
-  void semaforoPrimaParte(int rosso_,int verde)
+  void semaforoPrimaParte(int rosso_,int verde)//Questo metodo si occupa della prima parte del ciclo del semaforo(dall'inizio fino a quando il verde lampeggia)
   {
     digitalWrite(rosso_,HIGH);
     digitalWrite(verde,HIGH);
     delay(durataSoloVerde);
     lampeggiaVerde(verde);
   }
-  void semaforoSecondaParte(int verde_, int rosso, int rosso_, int giallo, int giallo_)
+  void semaforoSecondaParte(int verde_, int rosso, int rosso_, int giallo, int giallo_)//Questo metodo si occupa della seconda parte del ciclo del semaforo(dall' accensione dei led gialli alla fine del ciclo)
   {
     digitalWrite(giallo,HIGH);
     digitalWrite(giallo_,HIGH);
@@ -68,7 +68,7 @@ void lampeggiaVerde(int verde)
     digitalWrite(verde_,HIGH);
   }
 
-  void richiestaValori()
+  void richiestaValori()//Questo metodo serve per richiedere tutti i valori necessari al funzionamento del programma
   {
     richiestaDurataSemaforo();
     richiestaDurataGiallo();
